@@ -36,6 +36,9 @@ https://notepad-plus-plus.org/downloads/
 после скачивания обратно переименовываете в HowTo_NirCmd.lnk и нажимаете мышкой.
 И репозиторий склонирован. Удачи
 
+Маленький совет.
+Мышью по панели виндовс и по кнопке пуск кликать бесполезно, попробуй ctrl+b tab tab tab tab arrow.right enter
+
 Киркоров бы Вами гордился!!!
 ![image](https://github.com/IvanSibirevV2/HowTo_NirCmd/assets/19653524/5fa341ac-6953-4a21-a58d-ad13f296bff5)
 
