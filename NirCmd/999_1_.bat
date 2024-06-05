@@ -3,6 +3,17 @@
 if "%cd%\" EQU "%~dp0" ((start notepad++ %0)&&(exit /b))
 cd %~dp0
 title %~0 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::Догружаем компонент если его нет.
+IF NOT EXIST nircmd.exe (
+  echo Требуемый Компонент не найден. Начинаю дозагрузку...
+  echo Буду скачивать nircmd.exe
+  del nircmd.exe
+  rmdir HowTo_NirCmd /s /q
+  git clone --depth 1 https://github.com/IvanSibirevV2/HowTo_NirCmd.git
+  copy HowTo_NirCmd\NirCmd\nircmd.exe nircmd.exe
+  rmdir HowTo_NirCmd /s /q
+)
 :::::::::::::::::::::::::::::::::::::::::::::
 ::Config
 ::https://learn.microsoft.com/ru-ru/windows/win32/inputdev/virtual-key-codes?redirectedfrom=MSDN
