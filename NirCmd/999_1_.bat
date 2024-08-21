@@ -123,72 +123,22 @@ set _\=0xDC
 set _]=0xDD
 set _'=0xDE
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::call :Script_10_24__20_12_2023
-for /L %%i in (1,1,28) do (
-nircmd wait 25
-nircmd sendkeypress %_WIN%+b
-nircmd wait 25
-nircmd sendkeypress %_TAB%
-nircmd wait 25
-nircmd sendkeypress %_TAB%
-nircmd wait 25
-nircmd sendkeypress %_TAB%
-nircmd wait 25
-nircmd sendkeypress %_TAB%
-nircmd wait 25
-nircmd sendkeypress %_arrow.RIGHT%
-nircmd wait 25
-nircmd sendkeypress %_arrow.RIGHT%
-nircmd wait 25
-nircmd sendkeypress %_arrow.RIGHT%
-nircmd wait 25
-nircmd sendkeypress %_ENTER%
-nircmd wait 25
-nircmd sendkeypress %_CTRL%+c
-nircmd wait 25
-nircmd sendkeypress %_arrow.DOWN%
-nircmd wait 25
-nircmd sendkeypress %_WIN%+b
-nircmd wait 25
-nircmd sendkeypress %_TAB%
-nircmd wait 25
-nircmd sendkeypress %_TAB%
-nircmd wait 25
-nircmd sendkeypress %_TAB%
-nircmd wait 25
-nircmd sendkeypress %_TAB%
-nircmd wait 25
-nircmd sendkeypress %_arrow.RIGHT%
-nircmd wait 25
-nircmd sendkeypress %_arrow.RIGHT%
-nircmd wait 25
-nircmd sendkeypress %_arrow.RIGHT%
-nircmd wait 25
-nircmd sendkeypress %_arrow.RIGHT%
-nircmd wait 25
-nircmd sendkeypress %_ENTER%
-nircmd wait 25
-nircmd sendkeypress %_Backspace%
-nircmd wait 25
-nircmd sendkeypress %_CTRL%+v
-nircmd wait 25
-nircmd sendkeypress %_arrow.DOWN%
-nircmd wait 25
-nircmd sendkeypress %_WIN%+b
-nircmd wait 25
-nircmd sendkeypress %_TAB%
-nircmd wait 25
-nircmd sendkeypress %_TAB%
-nircmd wait 25
-nircmd sendkeypress %_TAB%
-nircmd wait 25
-nircmd sendkeypress %_TAB%
-nircmd wait 25
-nircmd sendkeypress %_arrow.RIGHT%
-nircmd wait 25
-nircmd sendkeypress %_ENTER%
-nircmd wait 25
-)
+nircmd setcursor 1700 650
+nircmd wait 100
+nircmd sendmouse right click
+nircmd wait 100
+nircmd setcursor 1700 960
+nircmd sendmouse left click
+nircmd setcursor 200 1050
+nircmd sendkeypress left click
+nircmd sendkeypress left click
+::nircmd sendkeypress %_WIN%+%_B%
+::nircmd sendkeypress %_TAB%
+::nircmd sendkeypress %_TAB%
+::nircmd sendkeypress %_TAB%
+::nircmd sendkeypress %_TAB%
+::nircmd sendkeypress %_arrow.RIGHT%
+::nircmd sendkeypress %_ENTER%
 ::nircmd wait 1000
 :::::::::::::::::::::::::::::::::::::::::::::
 (TIMEOUT /T 1)&&(exit /b)

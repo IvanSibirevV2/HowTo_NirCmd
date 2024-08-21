@@ -5,8 +5,6 @@ cd %~dp0
 title %~0 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::Догружаем компонент если его нет.
-::Установить 64-bit Git for Windows Setup.
-::https://git-scm.com/download/win
 IF NOT EXIST nircmd.exe (
   echo Требуемый Компонент не найден. Начинаю дозагрузку...
   echo Буду скачивать nircmd.exe
@@ -16,8 +14,8 @@ IF NOT EXIST nircmd.exe (
   copy HowTo_NirCmd\NirCmd\nircmd.exe nircmd.exe
   rmdir HowTo_NirCmd /s /q
 )
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::Создаем таблицу кодов клавишь
+:::::::::::::::::::::::::::::::::::::::::::::
+::Config
 ::https://learn.microsoft.com/ru-ru/windows/win32/inputdev/virtual-key-codes?redirectedfrom=MSDN
 set _MousBtnLeft=0x01
 set _MousBtnRight=0x02
@@ -72,6 +70,7 @@ set _Q=0x51
 set _R=0x52
 set _S=0x53
 set _T=0x54
+set _T=0x54
 set _U=0x55
 set _V=0x56
 set _W=0x57
@@ -123,13 +122,73 @@ set _[=0xDB
 set _\=0xDC
 set _]=0xDD
 set _'=0xDE
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::Свой код писать сюда
-::(TIMEOUT /T 1)&&(exit /b)
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::Порозрачность
+set Title_Id=%date:~-4%%date:~3,2%%date:~0,2%_%TIME:~0,2%%TIME:~3,2%%TIME:~6,2%_%username%
+set Title_Id=%Title_Id: =_%
+title %Title_Id%
+nircmd.exe win trans ititle %Title_Id% 200
+::Выставляем координаты по умолчанию
+set x1=0
+set y1=0
+set x2=0
+set y2=0
+set d=25
+:begin_130819082024
+echo e - Закончить выбор
+echo (z,x) - d(delto)(--,++)
+echo (d=%d%,x1=%x1%,y1=%y1%,x2=%x2%,y2=%y2%)
+set _var=0
+choice /c ezxwsad
+::1 e
+if %ErrorLevel% EQU 1 echo 1 e
+::2 z
+if %ErrorLevel% EQU 2 echo 2 z
+if %ErrorLevel% EQU 2 set /a d=%d%-1
+if %ErrorLevel% EQU 2 set /a var=0
+if %ErrorLevel% EQU 2 if %d% LEQ %var% set /a d=50
+if %ErrorLevel% EQU 2 goto begin_130819082024
+::3 x
+if %ErrorLevel% EQU 3 echo 3 x
+if %ErrorLevel% EQU 3 set /a d=%d%+1
+if %ErrorLevel% EQU 3 set /a var=51
+if %ErrorLevel% EQU 3 if %d% GEQ %var% set /a d=1
+if %ErrorLevel% EQU 3 goto begin_130819082024
+::4 w
+if %ErrorLevel% EQU 4 echo 4 w
+if %ErrorLevel% EQU 4 set /a y1=y1-%d%
+if %ErrorLevel% EQU 4 set /a var=0
+if %ErrorLevel% EQU 4 if %y1% LSS %var% set /a y1=0
+if %ErrorLevel% EQU 4 nircmd setcursor %x1% %y1%
+if %ErrorLevel% EQU 4 goto begin_130819082024
+::5 s
+if %ErrorLevel% EQU 5 echo 5 s
+::if %ErrorLevel% EQU 5 set /a y1=y1+%d%
+nircmd setcursor %x1% %y1%
+if %ErrorLevel% EQU 5 goto begin_130819082024
+
+::wsad
+
+::if %ErrorLevel% EQU 3 (
+::	echo 3 s
+::	set /a y1= %y1%+5
+::	goto begin_130819082024
+::)
+i::f %ErrorLevel% EQU 4 (
+::	echo 2 a
+::	set /a x1= %x1%-5
+::	goto begin_130819082024
+::)
+::if %ErrorLevel% EQU 5 (
+::	echo 3 d
+::	set /a x1= %x1%+5
+::	goto begin_130819082024
+::)
+nircmd wait 1000
+echo end_140819082024
+pause
 :::::::::::::::::::::::::::::::::::::::::::::
-::Запуск скрипта примера
-call :Script_10_24__20_12_2023
-(TIMEOUT /T 1)&&(exit /b)
+(TIMEOUT /T 10)&&(exit /b)
 :::::::::::::::::::::::::::::::::::::::::::::
 :Script_10_24__20_12_2023
 ::Обратите внимание. В этом мире все всегда не так как Вы могли предположить
@@ -142,7 +201,7 @@ nircmd sendkeypress ctrl+n
 ::Позволяет пакетно нажимать клавиши и комбинации клавишь
 ::Работает быстрее чем все возможные самописные обертки
 nircmd sendkeypress 0 1 2 3 4 5 6 7 8 9 enter
-nircmd sendkeypress a b c d e f g h i j k l m n o p q r s t u v w y z enter 
+nircmd sendkeypress a b c d e f g h i j k l m n o p q r s t u v w y z enter
 nircmd sendkeypress capslock a b c d e f g h i j k l m n o p q r s t u v w y z capslock enter
 ::https://lists.w3.org/Archives/Public/www-dom/2010JulSep/att-0182/keyCode-spec.html
 ::Пытаемся делать пунктуацию
@@ -173,6 +232,7 @@ for /L %%i in (1,1,100) do (
 ::nircmd sendmouse left click
 ::ожидание 1000 милисекунд
 ::nircmd wait 1000
+
 nircmd sendkeypress ctrl+w tab
 ::Как видим, оно работает
 exit /b
