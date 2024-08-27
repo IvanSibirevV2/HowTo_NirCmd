@@ -25,12 +25,9 @@ set Title_Id=%Title_Id: =_%
 title %Title_Id%
 nircmd.exe win trans ititle %Title_Id% 200
 ::Выставляем координаты по умолчанию
-set x1=0
-set y1=0
-set x2=0
-set y2=0
-set d=25
+(set /a x1=0)&(set /a y1=0)&(set /a x2=0)&(set /a y2=0)&(set d=1)
 :begin_130819082024
+cls
 echo e - Закончить выбор
 echo (z,x) - d(delto)(--,++)
 echo (d=%d%,x1=%x1%,y1=%y1%,x2=%x2%,y2=%y2%)
