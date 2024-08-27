@@ -25,49 +25,85 @@ set Title_Id=%Title_Id: =_%
 title %Title_Id%
 nircmd.exe win trans ititle %Title_Id% 200
 ::Выставляем координаты по умолчанию
-(set /a x1=0)&(set /a y1=0)&(set /a x2=0)&(set /a y2=0)&(set d=1)
+(set /a x1=0)&(set /a y1=0)&(set /a x2=0)&(set /a y2=0)&(set /a d=1)
 :begin_130819082024
 cls
-echo e - Закончить выбор
-echo (z,x) - d(delto)(--,++)
-echo (d=%d%,x1=%x1%,y1=%y1%,x2=%x2%,y2=%y2%)
-set _var=0
-choice /c ezxwsad
-::1 e
+echo d=%d%
+echo (x1=%x1%,y1=%y1%)
+echo (x2=%x2%,y2=%y2%)
+choice /T 1 /c eqwsadtgfh /D e
+set /a d=%d%+1
+if %d% GTR 25 set /a d=25
 if %ErrorLevel% EQU 1 echo 1 e
-::2 z
-if %ErrorLevel% EQU 2 echo 2 z
-if %ErrorLevel% EQU 2 set /a d=%d%-1
-if %ErrorLevel% EQU 2 set /a var=0
-if %ErrorLevel% EQU 2 if %d% LEQ %var% set /a d=50
-if %ErrorLevel% EQU 2 goto begin_130819082024
-::3 x
-if %ErrorLevel% EQU 3 echo 3 x
-if %ErrorLevel% EQU 3 set /a d=%d%+1
-if %ErrorLevel% EQU 3 set /a var=51
-if %ErrorLevel% EQU 3 if %d% GEQ %var% set /a d=1
+if %ErrorLevel% EQU 1 set /a d=1
+if %ErrorLevel% EQU 1 goto begin_130819082024
+if %ErrorLevel% EQU 2 echo 2 q
+if %ErrorLevel% EQU 3 echo 3 w
+if %ErrorLevel% EQU 3 set /a y1=%y1%-%d%
+if %ErrorLevel% EQU 3 if %y1% LSS 0 set /a y1=0
+if %ErrorLevel% EQU 3 set /a y2=%y1%
 if %ErrorLevel% EQU 3 goto begin_130819082024
-::4 w
-if %ErrorLevel% EQU 4 echo 4 w
-if %ErrorLevel% EQU 4 set /a y1=y1-%d%
-if %ErrorLevel% EQU 4 set /a var=0
-if %ErrorLevel% EQU 4 if %y1% LSS %var% set /a y1=0
-if %ErrorLevel% EQU 4 nircmd setcursor %x1% %y1%
+if %ErrorLevel% EQU 4 echo 4 s
+if %ErrorLevel% EQU 4 set /a y1=%y1%+%d%
+if %ErrorLevel% EQU 4 set /a y2=%y1%
 if %ErrorLevel% EQU 4 goto begin_130819082024
-::5 s
-if %ErrorLevel% EQU 5 echo 5 s
-::if %ErrorLevel% EQU 5 set /a y1=y1+%d%
-nircmd setcursor %x1% %y1%
+if %ErrorLevel% EQU 5 echo 5 a
+if %ErrorLevel% EQU 5 set /a x1=%x1%-%d%
+if %ErrorLevel% EQU 5 if %x1% LSS 0 set /a x1=0
+if %ErrorLevel% EQU 5 set /a x2=%x1%
 if %ErrorLevel% EQU 5 goto begin_130819082024
-
+if %ErrorLevel% EQU 6 echo 6 d
+if %ErrorLevel% EQU 6 set /a x1=%x1%+%d%
+if %ErrorLevel% EQU 6 set /a x2=%x1%
+if %ErrorLevel% EQU 6 goto begin_130819082024
+if %ErrorLevel% EQU 7 echo 7 t
+if %ErrorLevel% EQU 7 set /a y2=%y2%-%d%
+if %ErrorLevel% EQU 7 if %y2% LSS 0 set /a y2=0
+if %ErrorLevel% EQU 7 goto begin_130819082024
+if %ErrorLevel% EQU 8 echo 8 g
+if %ErrorLevel% EQU 8 set /a y2=%y2%+%d%
+if %ErrorLevel% EQU 8 goto begin_130819082024
+if %ErrorLevel% EQU 9 echo 9 f
+if %ErrorLevel% EQU 9 set /a x2=%x2%-%d%
+if %ErrorLevel% EQU 9 if %x2% LSS 0 set /a x2=0
+if %ErrorLevel% EQU 9 goto begin_130819082024
+if %ErrorLevel% EQU 10 echo 10 h
+if %ErrorLevel% EQU 10 set /a x2=%x2%+%d%
+if %ErrorLevel% EQU 10 goto begin_130819082024
+::qezxwsad
+::1 e
+::if %ErrorLevel% EQU 1 echo 1 e
+::2 z
+::if %ErrorLevel% EQU 2 echo 2 z
+::if %ErrorLevel% EQU 2 set /a d=%d%-1
+::if %ErrorLevel% EQU 2 set /a var=0
+::if %ErrorLevel% EQU 2 if %d% LEQ %var% set /a d=50
+::if %ErrorLevel% EQU 2 goto begin_130819082024
+::3 x
+::if %ErrorLevel% EQU 3 echo 3 x
+::if %ErrorLevel% EQU 3 set /a d=%d%+1
+::if %ErrorLevel% EQU 3 set /a var=51
+::if %ErrorLevel% EQU 3 if %d% GEQ %var% set /a d=1
+::if %ErrorLevel% EQU 3 goto begin_130819082024
+::4 w
+::if %ErrorLevel% EQU 4 echo 4 w
+::if %ErrorLevel% EQU 4 set /a y1=y1-%d%
+::if %ErrorLevel% EQU 4 set /a var=0
+::if %ErrorLevel% EQU 4 if %y1% LSS %var% set /a y1=0
+::if %ErrorLevel% EQU 4 nircmd setcursor %x1% %y1%
+::if %ErrorLevel% EQU 4 goto begin_130819082024
+::5 s
+::if %ErrorLevel% EQU 5 echo 5 s
+::if %ErrorLevel% EQU 5 set /a y1=y1+%d%
+::nircmd setcursor %x1% %y1%
+::if %ErrorLevel% EQU 5 goto begin_130819082024
 ::wsad
-
 ::if %ErrorLevel% EQU 3 (
 ::	echo 3 s
 ::	set /a y1= %y1%+5
 ::	goto begin_130819082024
 ::)
-i::f %ErrorLevel% EQU 4 (
+::i::f %ErrorLevel% EQU 4 (
 ::	echo 2 a
 ::	set /a x1= %x1%-5
 ::	goto begin_130819082024
@@ -78,7 +114,7 @@ i::f %ErrorLevel% EQU 4 (
 ::	goto begin_130819082024
 ::)
 nircmd wait 1000
-echo end_140819082024
+::echo end_140819082024
 pause
 :::::::::::::::::::::::::::::::::::::::::::::
 (TIMEOUT /T 10)&&(exit /b)
