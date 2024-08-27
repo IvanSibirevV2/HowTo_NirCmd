@@ -35,9 +35,9 @@ echo (x1=%x1%,y1=%y1%)
 echo (x2=%x2%,y2=%y2%)
 choice /T 1 /c eqwsadtgfh /D e
 set /a MiniD=%MiniD%+1
-if %MiniD% GEQ 2 set /a d=%d%+1
-if %MiniD% GEQ 2 set /a MiniD=0
-if %d% GTR 20 set /a d=20
+if %MiniD% GEQ 3 set /a d=%d%+1
+if %MiniD% GEQ 3 set /a MiniD=0
+if %d% GTR 50 set /a d=50
 if %ErrorLevel% EQU 1 echo 1 e
 if %ErrorLevel% EQU 1 set /a MiniD=0
 if %ErrorLevel% EQU 1 set /a d=1
@@ -64,17 +64,17 @@ if %ErrorLevel% EQU 6 (nircmd setcursor %x1% %y1%)&(goto begin_130819082024)
 if %ErrorLevel% EQU 7 echo 7 t
 if %ErrorLevel% EQU 7 set /a y2=%y2%-%d%
 if %ErrorLevel% EQU 7 if %y2% LSS 0 set /a y2=0
-if %ErrorLevel% EQU 7 goto begin_130819082024
+if %ErrorLevel% EQU 7 (nircmd setcursor %x2% %y2%)&(goto begin_130819082024)
 if %ErrorLevel% EQU 8 echo 8 g
 if %ErrorLevel% EQU 8 set /a y2=%y2%+%d%
-if %ErrorLevel% EQU 8 goto begin_130819082024
+if %ErrorLevel% EQU 8 (nircmd setcursor %x2% %y2%)&(goto begin_130819082024)
 if %ErrorLevel% EQU 9 echo 9 f
 if %ErrorLevel% EQU 9 set /a x2=%x2%-%d%
 if %ErrorLevel% EQU 9 if %x2% LSS 0 set /a x2=0
-if %ErrorLevel% EQU 9 goto begin_130819082024
+if %ErrorLevel% EQU 9 (nircmd setcursor %x2% %y2%)&(goto begin_130819082024)
 if %ErrorLevel% EQU 10 echo 10 h
 if %ErrorLevel% EQU 10 set /a x2=%x2%+%d%
-if %ErrorLevel% EQU 10 goto begin_130819082024
+if %ErrorLevel% EQU 10 (nircmd setcursor %x2% %y2%)&(goto begin_130819082024)
 ::qezxwsad
 ::1 e
 ::if %ErrorLevel% EQU 1 echo 1 e
