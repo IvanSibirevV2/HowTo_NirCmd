@@ -26,15 +26,20 @@ title %Title_Id%
 nircmd.exe win trans ititle %Title_Id% 200
 ::Выставляем координаты по умолчанию
 (set /a x1=0)&(set /a y1=0)&(set /a x2=0)&(set /a y2=0)&(set /a d=1)
+set /a MiniD=1
 :begin_130819082024
 cls
 echo d=%d%
+echo MiniD=%MiniD%
 echo (x1=%x1%,y1=%y1%)
 echo (x2=%x2%,y2=%y2%)
 choice /T 1 /c eqwsadtgfh /D e
-set /a d=%d%+1
-if %d% GTR 25 set /a d=25
+set /a MiniD=%MiniD%+1
+if %MiniD% GEQ 2 set /a d=%d%+1
+if %MiniD% GEQ 2 set /a MiniD=0
+if %d% GTR 20 set /a d=20
 if %ErrorLevel% EQU 1 echo 1 e
+if %ErrorLevel% EQU 1 set /a MiniD=0
 if %ErrorLevel% EQU 1 set /a d=1
 if %ErrorLevel% EQU 1 goto begin_130819082024
 if %ErrorLevel% EQU 2 echo 2 q
@@ -42,20 +47,20 @@ if %ErrorLevel% EQU 3 echo 3 w
 if %ErrorLevel% EQU 3 set /a y1=%y1%-%d%
 if %ErrorLevel% EQU 3 if %y1% LSS 0 set /a y1=0
 if %ErrorLevel% EQU 3 set /a y2=%y1%
-if %ErrorLevel% EQU 3 goto begin_130819082024
+if %ErrorLevel% EQU 3 (nircmd setcursor %x1% %y1%)&(goto begin_130819082024)
 if %ErrorLevel% EQU 4 echo 4 s
 if %ErrorLevel% EQU 4 set /a y1=%y1%+%d%
 if %ErrorLevel% EQU 4 set /a y2=%y1%
-if %ErrorLevel% EQU 4 goto begin_130819082024
+if %ErrorLevel% EQU 4 (nircmd setcursor %x1% %y1%)&(goto begin_130819082024)
 if %ErrorLevel% EQU 5 echo 5 a
 if %ErrorLevel% EQU 5 set /a x1=%x1%-%d%
 if %ErrorLevel% EQU 5 if %x1% LSS 0 set /a x1=0
 if %ErrorLevel% EQU 5 set /a x2=%x1%
-if %ErrorLevel% EQU 5 goto begin_130819082024
+if %ErrorLevel% EQU 5 (nircmd setcursor %x1% %y1%)&(goto begin_130819082024)
 if %ErrorLevel% EQU 6 echo 6 d
 if %ErrorLevel% EQU 6 set /a x1=%x1%+%d%
 if %ErrorLevel% EQU 6 set /a x2=%x1%
-if %ErrorLevel% EQU 6 goto begin_130819082024
+if %ErrorLevel% EQU 6 (nircmd setcursor %x1% %y1%)&(goto begin_130819082024)
 if %ErrorLevel% EQU 7 echo 7 t
 if %ErrorLevel% EQU 7 set /a y2=%y2%-%d%
 if %ErrorLevel% EQU 7 if %y2% LSS 0 set /a y2=0
