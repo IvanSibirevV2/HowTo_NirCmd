@@ -75,6 +75,14 @@ if %ErrorLevel% EQU 9 (nircmd setcursor %x2% %y2%)&(goto begin_130819082024)
 if %ErrorLevel% EQU 10 echo 10 h
 if %ErrorLevel% EQU 10 set /a x2=%x2%+%d%
 if %ErrorLevel% EQU 10 (nircmd setcursor %x2% %y2%)&(goto begin_130819082024)
+nircmd wait 500
+nircmd  savescreenshot *clipboard* %x1% %y1% %x2% %y2%
+nircmd wait 500
+start mspaint
+nircmd wait 5000
+nircmd sendkeypress ctrl+%_N%
+nircmd wait 500
+nircmd sendkeypress ctrl+%_v%
 ::qezxwsad
 ::1 e
 ::if %ErrorLevel% EQU 1 echo 1 e
