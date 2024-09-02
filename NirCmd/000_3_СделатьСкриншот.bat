@@ -78,103 +78,15 @@ if %ErrorLevel% EQU 10 (nircmd setcursor %x2% %y2%)&(goto begin_130819082024)
 nircmd wait 500
 nircmd  savescreenshot *clipboard* %x1% %y1% %x2% %y2%
 nircmd wait 500
-start mspaint
-nircmd wait 5000
-nircmd sendkeypress ctrl+%_N%
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+nircmd sendkeypress %_WIN%+%_B%
+nircmd sendkeypress %_TAB% %_TAB% %_TAB% %_TAB%
+nircmd sendkeypress %_arrow.RIGHT% %_arrow.RIGHT% %_arrow.RIGHT% %_arrow.RIGHT%
+nircmd sendkeypress %_ENTER%
 nircmd wait 500
-nircmd sendkeypress ctrl+%_v%
-::qezxwsad
-::1 e
-::if %ErrorLevel% EQU 1 echo 1 e
-::2 z
-::if %ErrorLevel% EQU 2 echo 2 z
-::if %ErrorLevel% EQU 2 set /a d=%d%-1
-::if %ErrorLevel% EQU 2 set /a var=0
-::if %ErrorLevel% EQU 2 if %d% LEQ %var% set /a d=50
-::if %ErrorLevel% EQU 2 goto begin_130819082024
-::3 x
-::if %ErrorLevel% EQU 3 echo 3 x
-::if %ErrorLevel% EQU 3 set /a d=%d%+1
-::if %ErrorLevel% EQU 3 set /a var=51
-::if %ErrorLevel% EQU 3 if %d% GEQ %var% set /a d=1
-::if %ErrorLevel% EQU 3 goto begin_130819082024
-::4 w
-::if %ErrorLevel% EQU 4 echo 4 w
-::if %ErrorLevel% EQU 4 set /a y1=y1-%d%
-::if %ErrorLevel% EQU 4 set /a var=0
-::if %ErrorLevel% EQU 4 if %y1% LSS %var% set /a y1=0
-::if %ErrorLevel% EQU 4 nircmd setcursor %x1% %y1%
-::if %ErrorLevel% EQU 4 goto begin_130819082024
-::5 s
-::if %ErrorLevel% EQU 5 echo 5 s
-::if %ErrorLevel% EQU 5 set /a y1=y1+%d%
-::nircmd setcursor %x1% %y1%
-::if %ErrorLevel% EQU 5 goto begin_130819082024
-::wsad
-::if %ErrorLevel% EQU 3 (
-::	echo 3 s
-::	set /a y1= %y1%+5
-::	goto begin_130819082024
-::)
-::i::f %ErrorLevel% EQU 4 (
-::	echo 2 a
-::	set /a x1= %x1%-5
-::	goto begin_130819082024
-::)
-::if %ErrorLevel% EQU 5 (
-::	echo 3 d
-::	set /a x1= %x1%+5
-::	goto begin_130819082024
-::)
-nircmd wait 1000
-::echo end_140819082024
-pause
-:::::::::::::::::::::::::::::::::::::::::::::
-(TIMEOUT /T 10)&&(exit /b)
-:::::::::::::::::::::::::::::::::::::::::::::
-:Script_10_24__20_12_2023
-::Обратите внимание. В этом мире все всегда не так как Вы могли предположить
-::Запуск приложения Npp с последующим открытием с ожиданием конца исполнения
-start /w notepad++
-::Безбожно прожимаем горячие клавиши создания нового окна в Npp.
-::Фокус перейдет на него...
-nircmd sendkeypress ctrl+n
-::https://nircmd.nirsoft.net/sendkeypress.html
-::Позволяет пакетно нажимать клавиши и комбинации клавишь
-::Работает быстрее чем все возможные самописные обертки
-nircmd sendkeypress 0 1 2 3 4 5 6 7 8 9 enter
-nircmd sendkeypress a b c d e f g h i j k l m n o p q r s t u v w y z enter
-nircmd sendkeypress capslock a b c d e f g h i j k l m n o p q r s t u v w y z capslock enter
-::https://lists.w3.org/Archives/Public/www-dom/2010JulSep/att-0182/keyCode-spec.html
-::Пытаемся делать пунктуацию
-nircmd sendkeypress %_,% %_-% %_.% %_/% %_`% %_[% %_\% %_]% %_'% enter
-::Пытаемся делать Русский TxT
-:: переключаем раскладку если получитася
-:: компа нехватает мошшности, может произойти залипание
-:: делайте заддержку под себя
-nircmd sendkeypress alt+shift wait 1000
-nircmd sendkeypress f %_,% d u l t %_;% p b r k v y j g h c n e a %_[% w x i o %_]% s m %_'% %_.% z
-nircmd sendkeypress alt+shift wait 1000
-nircmd sendkeypress enter
-nircmd sendkeypress alt+shift wait 1000
-nircmd sendkeypress capslock  f %_,% d u l t %_;% p b r k v y j g h c n e a %_[% w x i o %_]% s m %_'% %_.% z capslock 
-nircmd sendkeypress alt+shift wait 1000
-
-::Танцуем мышькой
-for /L %%i in (1,1,100) do (
- nircmd movecursor 25 0
- nircmd movecursor 0 25
- nircmd movecursor -25 0
- nircmd movecursor 0 -25
- echo i = %%i
-)
-::мышь на координаты 50 ы50
-::nircmd setcursor 50 10
-::nircmd sendmouse right click
-::nircmd sendmouse left click
-::ожидание 1000 милисекунд
-::nircmd wait 1000
-
-nircmd sendkeypress ctrl+w tab
-::Как видим, оно работает
-exit /b
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::start mspaint
+::nircmd wait 5000
+::nircmd sendkeypress ctrl+%_N%
+::nircmd wait 500
+::nircmd sendkeypress ctrl+%_v%
