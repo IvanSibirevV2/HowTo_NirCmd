@@ -75,18 +75,21 @@ if %ErrorLevel% EQU 9 (nircmd setcursor %x2% %y2%)&(goto begin_130819082024)
 if %ErrorLevel% EQU 10 echo 10 h
 if %ErrorLevel% EQU 10 set /a x2=%x2%+%d%
 if %ErrorLevel% EQU 10 (nircmd setcursor %x2% %y2%)&(goto begin_130819082024)
-nircmd wait 500
-nircmd  savescreenshot *clipboard* %x1% %y1% %x2% %y2%
-nircmd wait 500
+
+nircmd wait 200
+nircmd win min title %Title_Id%
+nircmd wait 200
+nircmd savescreenshot *clipboard* %x1% %y1% %x2% %y2%
+nircmd wait 200
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-nircmd sendkeypress %_WIN%+%_B%
-nircmd sendkeypress %_TAB% %_TAB% %_TAB% %_TAB%
-nircmd sendkeypress %_arrow.RIGHT% %_arrow.RIGHT% %_arrow.RIGHT% %_arrow.RIGHT%
-nircmd sendkeypress %_ENTER%
-nircmd wait 500
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::start mspaint
-::nircmd wait 5000
-::nircmd sendkeypress ctrl+%_N%
+::nircmd sendkeypress %_WIN%+%_B%
+::nircmd sendkeypress %_TAB% %_TAB% %_TAB% %_TAB%
+::nircmd sendkeypress %_arrow.RIGHT% %_arrow.RIGHT% %_arrow.RIGHT% %_arrow.RIGHT%
+::nircmd sendkeypress %_ENTER%
 ::nircmd wait 500
-::nircmd sendkeypress ctrl+%_v%
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+start mspaint
+nircmd wait 5000
+nircmd sendkeypress ctrl+%_N%
+nircmd wait 1000
+nircmd sendkeypress ctrl+%_v%
