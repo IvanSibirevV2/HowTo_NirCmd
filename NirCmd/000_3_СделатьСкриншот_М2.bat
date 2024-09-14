@@ -25,6 +25,17 @@ set Title_Id=%Title_Id: =_%
 title %Title_Id%
 nircmd.exe win trans ititle %Title_Id% 200
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: Временный подпил, будете использовать тогда удалите.
+nircmd sendkeypress %_WIN%+%_B%
+for /L %%i in (1,1,4) do nircmd sendkeypress %_TAB%
+for /L %%i in (1,1,9) do nircmd sendkeypress %_arrow.RIGHT%
+nircmd sendkeypress %_ENTER%
+nircmd sendkeypress %_WIN%+%_B%
+for /L %%i in (1,1,4) do nircmd sendkeypress %_TAB%
+for /L %%i in (1,1,11) do nircmd sendkeypress %_arrow.RIGHT%
+nircmd sendkeypress %_ENTER%
+nircmd wait 500
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::Выставляем координаты по умолчанию
 (set /a x1=0)&(set /a y1=0)&(set /a x2=0)&(set /a y2=0)&(set /a d=1)
 set /a MiniD=1
