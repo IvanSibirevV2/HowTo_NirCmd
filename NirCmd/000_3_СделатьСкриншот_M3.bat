@@ -37,7 +37,7 @@ nircmd sendkeypress %_ENTER%
 nircmd wait 500
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::Выставляем координаты по умолчанию
-(set /a x1=0)&(set /a y1=0)&(set /a x2=0)&(set /a y2=0)&(set /a d=1)
+(set /a x1=220)&(set /a y1=190)&(set /a x2=1770)&(set /a y2=190)&(set /a d=1)
 set /a MiniD=1
 :begin_130819082024
 cls
@@ -47,7 +47,7 @@ echo (x1=%x1%,y1=%y1%)
 echo (x2=%x2%,y2=%y2%)
 choice /T 1 /c eqwsadtgfh /D e
 set /a MiniD=%MiniD%+1
-if %MiniD% GEQ 3 set /a d=%d%+2
+if %MiniD% GEQ 3 set /a d=%d%+3
 if %MiniD% GEQ 3 set /a MiniD=0
 if %d% GTR 50 set /a d=50
 if %ErrorLevel% EQU 1 echo 1 e
@@ -67,7 +67,7 @@ if %ErrorLevel% EQU 4 (nircmd setcursor %x1% %y1%)&(goto begin_130819082024)
 if %ErrorLevel% EQU 5 echo 5 a
 if %ErrorLevel% EQU 5 set /a x1=%x1%-%d%
 if %ErrorLevel% EQU 5 if %x1% LSS 0 set /a x1=0
-if %ErrorLevel% EQU 5 set /a x2=%x1%
+::if %ErrorLevel% EQU 5 set /a x2=%x1%
 if %ErrorLevel% EQU 5 (nircmd setcursor %x1% %y1%)&(goto begin_130819082024)
 if %ErrorLevel% EQU 6 echo 6 d
 if %ErrorLevel% EQU 6 set /a x1=%x1%+%d%
