@@ -123,15 +123,24 @@ set _\=0xDC
 set _]=0xDD
 set _'=0xDE
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-nircmd setcursor 1700 650
-nircmd wait 100
-nircmd sendmouse right click
-nircmd wait 100
+nircmd sendkeypress %_WIN%+%_B%
+for /L %%i in (1,1,4) do (nircmd sendkeypress %_TAB% )
+for /L %%i in (1,1,5) do (nircmd sendkeypress %_arrow.RIGHT%)
 nircmd setcursor 1700 960
-nircmd sendmouse left click
-nircmd setcursor 200 1050
-nircmd sendkeypress left click
-nircmd sendkeypress left click
+nircmd sendkeypress %_ENTER%
+for /L %%i in (1,1,10) do (nircmd sendkeypress %_PAGEUP%)
+nircmd setcursor 1600 300
+nircmd wait 100
+nircmd sendkeypress right click
+::nircmd setcursor 1000 500
+nircmd wait 100
+::nircmd sendmouse right click
+::nircmd wait 100
+::nircmd setcursor 1700 960
+::nircmd sendmouse left click
+::nircmd setcursor 200 1050
+::nircmd sendkeypress left click
+::nircmd sendkeypress left click
 ::nircmd sendkeypress %_WIN%+%_B%
 ::nircmd sendkeypress %_TAB%
 ::nircmd sendkeypress %_TAB%
