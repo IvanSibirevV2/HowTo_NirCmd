@@ -92,8 +92,8 @@ nircmd wait 200
 ::nircmd sendkeypress %_ENTER%
 ::nircmd wait 500
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::start mspaint
-::nircmd wait 5000
-::nircmd sendkeypress ctrl+%_N%
-::nircmd wait 1000
-::nircmd sendkeypress ctrl+%_v%
+start mspaint
+nircmd wait 5000
+nircmd sendkeypress ctrl+%_N%
+nircmd wait 1000
+nircmd sendkeypress ctrl+%_v%
