@@ -6,21 +6,24 @@ title %~0
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::Позволяет сделать закладку на запуск приложения по горячей клавише
 ::Для сохранения закладки запустите скрипт под администратором
-explorer "C:\ProgramData\Microsoft\Windows\Start Menu\Programs"
 @echo off
-echo Set oWS = WScript.CreateObject("WScript.Shell") > CreateShortcut.vbs
-echo sLinkFile = "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Hello.lnk" >> CreateShortcut.vbs
-echo Set oLink = oWS.CreateShortcut(sLinkFile) >> CreateShortcut.vbs
-echo oLink.TargetPath = "C:\Windows\notepad.exe" >> CreateShortcut.vbs
-echo oLink.Arguments = "" >> CreateShortcut.vbs
-echo  oLink.Description = "MyProgram" >> CreateShortcut.vbs
-::echo  oLink.HotKey = "ALT+CTRL+F" >> CreateShortcut.vbs
-echo  oLink.HotKey = "" >> CreateShortcut.vbs
-echo  oLink.IconLocation = "C:\Program Files\MyApp\MyProgram.EXE, 2" >> CreateShortcut.vbs
-echo  oLink.WindowStyle = "1" >> CreateShortcut.vbs
-echo  oLink.WorkingDirectory = "C:\Program Files\MyApp" >> CreateShortcut.vbs
-echo oLink.Save >> CreateShortcut.vbs
-cscript CreateShortcut.vbs
+(
+echo Set oWS = WScript.CreateObject("WScript.Shell"^)
+echo sLinkFile = "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\HelloWorld.lnk"
+echo Set oLink = oWS.CreateShortcut(sLinkFile^)
+echo oLink.TargetPath = "C:\Windows\notepad.exe"
+echo oLink.Arguments = ""
+echo oLink.Description = "MyProgram"
+::echo oLink.HotKey = "ALT+CTRL+F"
+echo oLink.HotKey = "Q"
+echo oLink.IconLocation = "C:\Program Files\MyApp\MyProgram.EXE, 2"
+echo oLink.WindowStyle = "1"
+echo oLink.WorkingDirectory = "C:\Program Files\MyApp"
+echo oLink.Save
+) > CreateShortcut.vbs
+type CreateShortcut.vbs
+powershell -Command "Start-Process cscript %cd%\CreateShortcut.vbs -Verb RunAs "
+explorer "C:\ProgramData\Microsoft\Windows\Start Menu\Programs"
 del CreateShortcut.vbs
-(TIMEOUT /T 1)&&(exit /b)
+(TIMEOUT /T 10)&&(exit /b)
 :::::::::::::::::::::::::::::::::::::::::::::
