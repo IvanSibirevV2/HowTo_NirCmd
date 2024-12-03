@@ -3,6 +3,19 @@
 if "%cd%\" EQU "%~dp0" ((start notepad++ %0)&&(exit /b))
 cd %~dp0
 title %~0 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::Догружаем компонент если его нет.
+::Установить 64-bit Git for Windows Setup.
+::https://git-scm.com/download/win
+IF NOT EXIST nircmd.exe (
+  echo Требуемый Компонент не найден. Начинаю дозагрузку...
+  echo Буду скачивать nircmd.exe
+  del nircmd.exe
+  rmdir HowTo_NirCmd /s /q
+  git clone --depth 1 https://github.com/IvanSibirevV2/HowTo_NirCmd.git
+  copy HowTo_NirCmd\NirCmd\nircmd.exe nircmd.exe
+  rmdir HowTo_NirCmd /s /q
+)
 :::::::::::::::::::::::::::::::::::::::::::::
 start https://avatars.dzeninfra.ru/get-zen_doc/248942/pub_5b57219e6c14af00a9f843b7_5b588c3d9e4a5000aaabe6a2/scale_1200
 ECHO :::::::::::::::::::::::::::::::::::::::::::::
