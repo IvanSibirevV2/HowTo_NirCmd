@@ -7,6 +7,9 @@ title %~0
 ::Позволяет сделать закладку на запуск приложения по горячей клавише
 ::Для сохранения закладки запустите скрипт под администратором
 @echo off
+set SpellName=HelloWorld.lnk
+set SpellRing=C:\ProgramData\Microsoft\Windows\Start Menu\Programs
+set SpellStone=C:\Windows\notepad.exe
 (
 echo Set oWS = WScript.CreateObject("WScript.Shell"^)
 echo sLinkFile = "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\HelloWorld.lnk"
@@ -22,9 +25,9 @@ echo oLink.WindowStyle = "1"
 echo oLink.WorkingDirectory = "C:\Program Files\MyApp"
 echo oLink.Save
 ) > CreateShortcut.vbs
-type CreateShortcut.vbs
-powershell -Command "Start-Process cscript %cd%\CreateShortcut.vbs -Verb RunAs "
-explorer "C:\ProgramData\Microsoft\Windows\Start Menu\Programs"
-del CreateShortcut.vbs
+::type CreateShortcut.vbs
+::powershell -Command "Start-Process cscript %cd%\CreateShortcut.vbs -Verb RunAs "
+::explorer "C:\ProgramData\Microsoft\Windows\Start Menu\Programs"
+::del CreateShortcut.vbs
 (TIMEOUT /T 10)&&(exit /b)
 :::::::::::::::::::::::::::::::::::::::::::::
