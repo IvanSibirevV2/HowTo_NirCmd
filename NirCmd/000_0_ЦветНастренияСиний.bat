@@ -18,6 +18,7 @@ IF NOT EXIST nircmd.exe (
 )
 :::::::::::::::::::::::::::::::::::::::::::::
 start https://avatars.dzeninfra.ru/get-zen_doc/248942/pub_5b57219e6c14af00a9f843b7_5b588c3d9e4a5000aaabe6a2/scale_1200
+::start https://doomonline1.vercel.app/dos.html
 ECHO :::::::::::::::::::::::::::::::::::::::::::::
 COLOR 3F
 ECHO A problem has been detected and windows has been shut down to prevent damage to your computer.
@@ -31,7 +32,7 @@ ECHO.
 set Title_Id=%date:~-4%%date:~3,2%%date:~0,2%_%TIME:~0,2%%TIME:~3,2%%TIME:~6,2%_%username%
 set Title_Id=%Title_Id: =_%
 title %Title_Id%
-for /L %%i in (1,1,100) do (
+for /L %%i in (1,1,1000) do (
  ECHO  stop: 0x000000%%i ^(0XFD3094C2,0x00000001,0XFBFE7617,0x00000000^)
  nircmd win min title %Title_Id%
  nircmd wait 100
