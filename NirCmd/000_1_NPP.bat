@@ -72,4 +72,11 @@ for /L %%i in (1,1,25) do (
 ::nircmd wait 1000
 nircmd sendkeypress ctrl+w tab
 ::Как видим, оно работает
+
+::Данный программный код был сгенерирован DeepSpeek
+::Программка проверки того, какая клавиша была наборана
+::powershell -command "Add-Type -TypeDefinition 'using System; using System.Runtime.InteropServices; public class KeyCheck { [DllImport(\"user32.dll\")] public static extern short GetAsyncKeyState(int vKey); }'; while(1) { if (([KeyCheck]::GetAsyncKeyState(27) -band 0x8000) -ne 0) { Write-Host 'Выход...'; break } for ($i = 0; $i -le 254; $i++) { $state = [KeyCheck]::GetAsyncKeyState($i); if (($state -band 0x8000) -ne 0) { Write-Host 'Нажата клавиша:' $i } } Start-Sleep -Milliseconds 100 }"
+:: Проверка нажатия клавиши (например, пробела)
+::powershell -command "$vKey=32; Add-Type -TypeDefinition 'using System; using System.Runtime.InteropServices; public class KeyCheck { [DllImport(\"user32.dll\")] public static extern short GetAsyncKeyState(int vKey); }'; while(1) { if ([KeyCheck]::GetAsyncKeyState($vKey) -ne 0) { exit 0 } Start-Sleep -Milliseconds 100 }"
+
 exit /b
