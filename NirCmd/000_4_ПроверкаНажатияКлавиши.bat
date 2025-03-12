@@ -25,8 +25,26 @@ IF NOT EXIST nircmd.exe (
 ::(TIMEOUT /T 1)&&(exit /b)
 :::::::::::::::::::::::::::::::::::::::::::::
 ::Запуск скрипта примера
-call :Script_10_24__20_12_2023
-(TIMEOUT /T 1)&&(exit /b)
+echo Привет мир
+
+
+::Программка проверки того, какая клавиша была набоана
+::powershell -command "Add-Type -TypeDefinition 'using System; using System.Runtime.InteropServices; public class KeyCheck { [DllImport(\"user32.dll\")] public static extern short GetAsyncKeyState(int vKey); }'; while(1) { if (([KeyCheck]::GetAsyncKeyState(27) -band 0x8000) -ne 0) { Write-Host 'Выход...'; break } for ($i = 0; $i -le 254; $i++) { $state = [KeyCheck]::GetAsyncKeyState($i); if (($state -band 0x8000) -ne 0) { Write-Host 'Нажата клавиша:' $i } } Start-Sleep -Milliseconds 100 }"
+:: Проверка нажатия клавиши (например, пробела)
+powershell -command "$vKey=32; Add-Type -TypeDefinition 'using System; using System.Runtime.InteropServices; public class KeyCheck { [DllImport(\"user32.dll\")] public static extern short GetAsyncKeyState(int vKey); }'; while(1) { if ([KeyCheck]::GetAsyncKeyState($vKey) -ne 0) { exit 0 } Start-Sleep -Milliseconds 100 }"
+echo %ERRORLEVEL%
+::if %ERRORLEVEL% equ 0 (
+::    echo Клавиша нажата!
+::    :: Здесь можно вызвать NirCmd для действий
+::    nircmd.exe exec "notepad.exe"
+::) else (
+::    echo Клавиша не нажата.
+::)
+
+
+
+::call :Script_10_24__20_12_2023
+(TIMEOUT /T 10)&&(exit /b)
 :::::::::::::::::::::::::::::::::::::::::::::
 :Script_10_24__20_12_2023
 ::Обратите внимание. В этом мире все всегда не так как Вы могли предположить
@@ -72,4 +90,7 @@ for /L %%i in (1,1,25) do (
 ::nircmd wait 1000
 nircmd sendkeypress ctrl+w tab
 ::Как видим, оно работает
+::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::
 exit /b
