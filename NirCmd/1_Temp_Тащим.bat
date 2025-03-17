@@ -38,7 +38,6 @@ powershell -command "$vKey=120; Add-Type -TypeDefinition 'using System; using Sy
 echo %ERRORLEVEL%
 nircmd sendmouse left click
 nircmd sendmouse left click
-
 nircmd sendmouse left click
 nircmd sendkeypress ctrl+c
 nircmd sendkeypress ctrl+2
@@ -46,6 +45,7 @@ nircmd sendkeypress %_ENTER%
 nircmd sendkeypress ctrl+v
 nircmd sendkeypress %_SHIFT%+%_ENTER%
 nircmd sendkeypress ctrl+3
+nircmd movecursor 0 34
 goto SpaseCycle
 echo HelloWorld
 ::Свой код писать сюда

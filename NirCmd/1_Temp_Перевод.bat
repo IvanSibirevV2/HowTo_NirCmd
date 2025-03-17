@@ -36,14 +36,12 @@ echo Нажмите ё и наслаждайтесь
 :: Проверка нажатия клавиши (например, пробела) :: 129 - клавиша ё
 powershell -command "$vKey=120; Add-Type -TypeDefinition 'using System; using System.Runtime.InteropServices; public class KeyCheck { [DllImport(\"user32.dll\")] public static extern short GetAsyncKeyState(int vKey); }'; while(1) { if ([KeyCheck]::GetAsyncKeyState($vKey) -ne 0) { exit 0 } Start-Sleep -Milliseconds 25 }"
 echo %ERRORLEVEL%
-for /L %%i in (1,1,100) do (
-	nircmd sendkeypress %_b%
-	nircmd sendkeypress %_m%
-	echo i = %%i
-)
-for /L %%i in (1,1,100) do (
-	nircmd sendkeypress %_arrow.UP%
-)
+nircmd sendkeypress %_HOME%
+nircmd sendkeypress %_END%
+nircmd sendkeypress %_SPACE%
+nircmd sendkeypress %_DELETE%
+nircmd sendkeypress %_HOME%
+nircmd sendkeypress %_arrow.UP%
 goto SpaseCycle
 echo HelloWorld
 ::Свой код писать сюда
